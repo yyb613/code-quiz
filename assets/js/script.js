@@ -6,3 +6,10 @@ var arrQuestions = [
     }
 ];
 
+var startbtn = document.querySelector("#startbtn");
+var header = document.querySelector("header");
+
+startbtn.addEventListener("click", function() {
+    header.style.visibility = "hidden";
+});
+
