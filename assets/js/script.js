@@ -38,11 +38,6 @@ var arrQuestions = [
     }
 ];
 
-// Game Over message
-function displayFinished() {
-    finalMessage.style.display = "block";
-}
-
 // if "Start Quiz" is pressed
 startbtn.addEventListener("click", function() {
     intro.style.display = "none"; // hide intro
@@ -60,7 +55,10 @@ startbtn.addEventListener("click", function() {
     }, 1000);
 });
 
-
+// Game Over message
+function displayFinished() {
+    finalMessage.style.display = "block";
+}
 
 
 /*
