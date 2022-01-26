@@ -91,23 +91,31 @@ startbtn.addEventListener("click", function () {
             if (selectedOption === correctAns) {         // if matches correct answer
                 var hrEl = document.createElement("hr"); // create horizontal rule
                 var h5El = document.createElement("h5"); // create h5 element
-                h5El.textContent = "Correct!";           // inject Correct!
-                quiz.appendChild(hrEl);                  // append horizontal rule
-                quiz.appendChild(h5El);                  // append h5 element
-                question.style.display = "none";         // hide current question
-                document.querySelector('.option').setAttribute("style", "display:none;"); //////// NOT WORKING ////////
+                h5El.textContent = "Correct!";           // inject 'Correct!'
+                question.style.display = "none";         // hide current question                
+                var optionsArr = document.querySelectorAll('.option'); // make options array
+                for (var j = 0; j < optionsArr.length; j++) {
+                    optionsArr[j].style.display = "none";              // hide options
+                }
                 i++;          // increment question index
                 displayQuiz() // display next question
+                quiz.appendChild(hrEl); // append horizontal rule
+                quiz.appendChild(h5El); // append h5 element
             } else {          // if wrong answer
                 var hrEl = document.createElement("hr"); // create horizontal rule
                 var h5El = document.createElement("h5"); // create h5 element
-                h5El.textContent = "Wrong!";             // inject Wrong!
-                quiz.appendChild(hrEl);                  // append horizontal rule
-                quiz.appendChild(h5El);                  // append h5 element
+                h5El.textContent = "Wrong!";             // inject 'Wrong!'
+                question.style.display = "none";         // hide current question                
+                var optionsArr = document.querySelectorAll('.option'); // make options array
+                for (var j = 0; j < optionsArr.length; j++) {
+                    optionsArr[j].style.display = "none";              // hide options
+                }
                 numWrong++;   // increment wrong count
                 secs -= 10;   // reduce time by 10secs
                 i++;          // increment question index
                 displayQuiz() // display next question
+                quiz.appendChild(hrEl); // append horizontal rule
+                quiz.appendChild(h5El); // append h5 element
             }
         }
     });
@@ -125,6 +133,8 @@ function displayFinished() {
     finalMessage.style.display = "block"; // make message visible
     document.querySelector('#score').textContent = calculateScore(); // display score
 }
+
+
 
 // Set highscore in local storage
 localStorage.setItem("newScore", score);  ///// HOW CAN I INCLUDE THE INITIALS? ///////
