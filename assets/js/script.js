@@ -4,10 +4,11 @@ var intro = document.querySelector('#intro');
 var startbtn = document.querySelector('#startbtn');
 var quiz = document.querySelector('#quiz');
 var finalMessage = document.querySelector('#final-message');
+var highscores = document.querySelector('#highscores');
 var score = 100; // initial score
 var secs = 0; // time before game starts
 var i = 0; // question index
-var numIncorrect = 0; // number of incorrect q's
+var numWrong = 0; // number of incorrect q's
 
 // display 0 seconds in timer
 time.textContent = secs;
@@ -85,20 +86,28 @@ startbtn.addEventListener("click", function () {
     var correctAns = arrQuestions[i].correctAns; // correct answer variable
 
     quiz.addEventListener("click", function (event) {
-        var selectedOption = event.target.textContent; // selected option variable
-        if (event.target.matches(".option")) {         // if an 'option button' is selected
-            if (selectedOption === correctAns) {       // if matches correct answer
-                question.style.display = "none";       // hide current question
+        var selectedOption = event.target.textContent;   // selected option variable
+        if (event.target.matches(".option")) {           // if an 'option button' is selected
+            if (selectedOption === correctAns) {         // if matches correct answer
+                var hrEl = document.createElement("hr"); // create horizontal rule
+                var h5El = document.createElement("h5"); // create h5 element
+                h5El.textContent = "Correct!";           // inject Correct!
+                quiz.appendChild(hrEl);                  // append horizontal rule
+                quiz.appendChild(h5El);                  // append h5 element
+                question.style.display = "none";         // hide current question
                 document.querySelector('.option').setAttribute("style", "display:none;"); //////// NOT WORKING ////////
-                i++;            // increment question index
-                                                                console.log('correct');  ////////// CONSOLE LOG ///////
-                displayQuiz()   // display next question
-            } else {            // if wrong answer
-                numIncorrect++; // increment wrong count
-                secs -= 15;     // reduce time by 15secs
-                i++;            // increment question index
-                                                                console.log('NOT correct'); /////// CONSOLE LOG ////////
-                displayQuiz()   // display next question
+                i++;          // increment question index
+                displayQuiz() // display next question
+            } else {          // if wrong answer
+                var hrEl = document.createElement("hr"); // create horizontal rule
+                var h5El = document.createElement("h5"); // create h5 element
+                h5El.textContent = "Wrong!";             // inject Wrong!
+                quiz.appendChild(hrEl);                  // append horizontal rule
+                quiz.appendChild(h5El);                  // append h5 element
+                numWrong++;   // increment wrong count
+                secs -= 10;   // reduce time by 10secs
+                i++;          // increment question index
+                displayQuiz() // display next question
             }
         }
     });
@@ -107,12 +116,21 @@ startbtn.addEventListener("click", function () {
 
 // Calculate score
 function calculateScore() {
-    score -= (numIncorrect * 20);
+    score -= (numWrong * 20);
     return score;
 }
 
 // Game Over message
 function displayFinished() {
     finalMessage.style.display = "block"; // make message visible
-    document.querySelector('#score').textContent = calculateScore();
+    document.querySelector('#score').textContent = calculateScore(); // display score
 }
+
+// Set highscore in local storage
+localStorage.setItem("newScore", score);  ///// HOW CAN I INCLUDE THE INITIALS? ///////
+
+// Retreive highscore from local storage
+var newHighScore = localStorage.getItem("newScore");
+
+// Append highscore to highscores list
+highscores.appendChild(newHighScore);      ////// NOT WORKING ///////
