@@ -1,5 +1,14 @@
+/* header */
+header {
+    display: flex; 
+}
+
+/* timer */
+#timer {
+    justify-content: flex-end;  /*** NOT WORKING ***/
+}
+
 /* hide Game Over message */
 #final-message {
     display: none;
 }
-
