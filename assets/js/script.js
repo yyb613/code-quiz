@@ -1,29 +1,23 @@
 
-
-var time = document.querySelector("#time");
+// initialize variables
+var time = document.querySelector('#time');
+var intro = document.querySelector('#intro');
+var startbtn = document.querySelector('#startbtn');
+var finalMessage = document.querySelector('#final-message');
+var score = 100;
 var secs = 0;
+
+// display seconds in timer
 time.textContent = secs;
 
-var startbtn = document.querySelector("#startbtn");
-var header = document.querySelector("header");
-
-var score = 100;
-
-function displayFinished() { // display finished message
-    var h1El = document.createElement("h1");
-    h1El.textContent = "All done!";
-    document.body.appendChild(h1El);
-
-    var h2El = document.createElement("h2");
-    h2El.textContent = "Your final score is " + score + '.';
-    document.body.appendChild(h2El);
-
-    var initials = document.createElement("h2");
-   // initials.textContent = "Enter initials: " + [INPUT BOX] + [SUBMIT];
+// game over message
+function displayFinished() {
+    finalMessage.style.display = "block";
 }
 
+// if "Start Quiz" is pressed
 startbtn.addEventListener("click", function() {
-    header.style.visibility = "hidden";
+    intro.style.display = "none";
 
     secs = 1;
 
@@ -34,9 +28,6 @@ startbtn.addEventListener("click", function() {
         if (secs < 0) { // display finished message
             clearInterval(timerInterval);
             displayFinished();
-            // All done!
-            // Your final scocre is ___.
-            // Enter initials: ______________ [Submit]
         }
     }, 1000);
 });
@@ -50,3 +41,23 @@ var arrQuestions = [
         correctAns: "4"
     }
 ];
+
+
+/*
+    var questionIndex = 0;
+    var numCorrect = 0;
+    var numIncorrect = 0;
+*/
+
+
+
+    // var h1El = document.createElement("h1");
+    // h1El.textContent = "All done!";
+    // document.body.appendChild(h1El);
+
+    // var h2El = document.createElement("h2");
+    // h2El.textContent = "Your final score is " + score + '.';
+    // document.body.appendChild(h2El);
+
+    // var initials = document.createElement("h2");
+   // initials.textContent = "Enter initials: " + [INPUT BOX] + [SUBMIT];

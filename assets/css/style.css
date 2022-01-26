@@ -1,0 +1,5 @@
+/* hide Game Over message */
+#final-message {
+    display: none;
+}
+

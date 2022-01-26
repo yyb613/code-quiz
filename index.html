@@ -14,14 +14,24 @@
 
     <span id="timer">Time: <span id="time"></span></span>
 
-    <header>
+    <div id="intro">
         <h1>Coding Quiz Challenge</h1>
         <h2>
             Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
             answers will penalize your score/time by ten seconds!
         </h2>
         <button id="startbtn">Start Quiz</button>
-    </header>
+    </div>
+
+    <div id="final-message">
+        <h1>All done!</h1>
+        <form>
+            <label><h2>Your final score is: </h2></label><span id="score"></span>
+            <label><h2>Enter initials: </h2></label>
+            <input type="text" id="initials">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 <script src="./assets/js/script.js"></script>
 
