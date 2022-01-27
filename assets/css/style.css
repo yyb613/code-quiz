@@ -4,6 +4,19 @@ header {
     justify-content: space-between;
 }
 
+/* visited/unvisited link */
+header > a:link, 
+header > a:visited {
+  color: purple;
+  text-decoration: none;
+}
+
+/* mouse over link */
+header > a:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
 /* Container */
 .container {
     display: flex;
@@ -18,7 +31,31 @@ header {
     text-align: center;
 }
 
-/* hide Game Over message */
+/* Buttons */
+button {
+    background-color: purple;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Horizontal Rule */
+hr {
+    color: gray;
+}
+
+/* Correct/Wrong Texts */
+h5 {
+    color: gray;
+}
+
+/* Game Over message */
 #final-message {
     display: none;
 }
