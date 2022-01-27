@@ -5,10 +5,10 @@ var startbtn = document.querySelector('#startbtn');
 var quiz = document.querySelector('#quiz');
 var finalMessage = document.querySelector('#final-message');
 var highscores = document.querySelector('#highscores');
-var score = 100; // initial score
+var score = 0; // initial score
 var secs = 0; // time before game starts
 var i = 0; // question index
-var numWrong = 0; // number of incorrect q's
+var numCorrect = 0; // number of incorrect q's
 
 // display 0 seconds in timer
 time.textContent = secs;
@@ -46,7 +46,7 @@ var arrQuestions = [
 startbtn.addEventListener("click", function () {
     intro.style.display = "none"; // hide intro
 
-    secs = 75; // set starting time
+    secs = 5; // set starting time
 
     var timerInterval = setInterval(function () { // COUNTDOWN
         time.textContent = secs; // display seconds
@@ -54,6 +54,7 @@ startbtn.addEventListener("click", function () {
 
         if (secs < 0 || i > 4) { // if (time is up || all q's answered)
             clearInterval(timerInterval); // stop timer
+            quiz.innerHTML = '';
             displayFinished(); // display finished message
         }
     }, 1000);
@@ -85,6 +86,7 @@ startbtn.addEventListener("click", function () {
                 var h5El = document.createElement("h5"); // create h5 element
                 h5El.textContent = "Correct!";           // inject 'Correct!'
                 question.style.display = "none";         // hide current question                
+                numCorrect++;   // increment correct count
                 i++;          // increment question index
                 quiz.innerHTML = '';
                 displayQuiz() // display next question
@@ -99,7 +101,6 @@ startbtn.addEventListener("click", function () {
                 var h5El = document.createElement("h5"); // create h5 element
                 h5El.textContent = "Wrong!";             // inject 'Wrong!'
                 question.style.display = "none";         // hide current question                
-                numWrong++;   // increment wrong count
                 secs -= 10;   // reduce time by 10secs
                 i++;          // increment question index
                 quiz.innerHTML = '';
@@ -118,7 +119,7 @@ startbtn.addEventListener("click", function () {
 
 // Calculate score
 function calculateScore() {
-    score -= (numWrong * 20);
+    score += (numCorrect * 20);
     return score;
 }
 
