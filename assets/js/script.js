@@ -46,7 +46,7 @@ var arrQuestions = [
 startbtn.addEventListener("click", function () {
     intro.style.display = "none"; // hide intro
 
-    secs = 5; // set starting time
+    secs = 75; // set starting time
 
     var timerInterval = setInterval(function () { // COUNTDOWN
         time.textContent = secs; // display seconds
@@ -63,7 +63,7 @@ startbtn.addEventListener("click", function () {
 
     function displayQuiz() {
         // show question
-        question = document.createElement("h2"); // initialize global question variable
+        var question = document.createElement("h2"); // initialize question variable
         question.textContent = arrQuestions[i].question; // inject question
         quiz.appendChild(question); // append question
 

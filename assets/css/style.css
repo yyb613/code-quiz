@@ -64,8 +64,17 @@ h5 {
     display: inline;
 }
 
-/* Highscores Container */
+/* Highscores Containers */
 #score_container {
     text-align: center;
     padding-top: 1vw;
+}
+
+#highscores {
+    background-color: rgb(247, 237, 245);
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 1%;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
