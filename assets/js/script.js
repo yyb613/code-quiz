@@ -8,7 +8,7 @@ var highscores = document.querySelector('#highscores');
 var score = 0; // initial score
 var secs = 0; // time before game starts
 var i = 0; // question index
-var numCorrect = 0; // number of incorrect q's
+var numCorrect = 0; // number of correct q's
 
 // display 0 seconds in timer
 time.textContent = secs;
@@ -54,7 +54,7 @@ startbtn.addEventListener("click", function () {
 
         if (secs < 0 || i > 4) { // if (time is up || all q's answered)
             clearInterval(timerInterval); // stop timer
-            quiz.innerHTML = '';
+            quiz.innerHTML = ''; // hide quiz
             displayFinished(); // display finished message
         }
     }, 1000);
