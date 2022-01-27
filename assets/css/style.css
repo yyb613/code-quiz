@@ -23,6 +23,10 @@ header {
     display: none;
 }
 
+#final-message h2 {
+    display: inline;
+}
+
 /* Highscores Container */
 #score_container {
     text-align: center;
