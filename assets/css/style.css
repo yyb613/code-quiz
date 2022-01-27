@@ -1,10 +1,30 @@
-/* header */
+/* Header */
 header {
     display: flex; 
     justify-content: space-between;
 }
 
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1vw;
+    padding-left: 31vw;
+    padding-right: 31vw;
+}
+
+/* Intro */
+#intro {
+    text-align: center;
+}
+
 /* hide Game Over message */
 #final-message {
     display: none;
+}
+
+/* Highscores Container */
+#score_container {
+    text-align: center;
+    padding-top: 1vw;
 }

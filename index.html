@@ -14,23 +14,25 @@
         <a href="./highscores.html">View Highscores</a>
         <span id="timer">Time: <span id="time"></span></span>
     </header>
-    <div id="intro">
-        <h1>Coding Quiz Challenge</h1>
-        <h2>
-            Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-            answers will penalize your score/time by ten seconds!
-        </h2>
-        <button id="startbtn">Start Quiz</button>
-    </div>
-    <div id="quiz"></div>
-    <div id="final-message">
-        <h1>All done!</h1>
-        <form action="highscores.html">
-            <label><h2>Your final score is: </h2></label><span id="score"></span>
-            <label><h2>Enter initials: </h2></label>
-            <input type="text" id="initials">
-            <button id='submit'>Submit</button>
-        </form>
+    <div class="container">
+        <div id="intro">
+            <h1>Coding Quiz Challenge</h1>
+            <h2>
+                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                answers will penalize your score/time by ten seconds!
+            </h2>
+            <button id="startbtn">Start Quiz</button>
+        </div>
+        <div id="quiz"></div>
+        <div id="final-message">
+            <h1>All done!</h1>
+            <form action="highscores.html">
+                <label><h2>Your final score is: </h2></label><span id="score"></span>
+                <label><h2>Enter initials: </h2></label>
+                <input type="text" id="initials">
+                <button id='submit'>Submit</button>
+            </form>
+        </div>
     </div>
 </body>
 <script src="./assets/js/script.js"></script>

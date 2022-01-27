@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Highscores</title>
 </head>
 <body>
-    <h1>Highscores</h1>
-    <div id="highscores"></div> 
-    <button onclick="location.href='index.html'">Go Back</button>
-    <button onclick="localStorage.clear();">Clear Highscores</button>
+    <div id="score_container">
+        <h1>Highscores</h1>
+        <div id="highscores"></div> 
+        <button onclick="location.href='index.html'">Go Back</button>
+        <button onclick="localStorage.clear(); location.reload();">Clear Highscores</button>
+    </div>
     <script src="./assets/js/scores.js"></script>
 </body>
 </html>
