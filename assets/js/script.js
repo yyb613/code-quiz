@@ -63,7 +63,7 @@ startbtn.addEventListener("click", function () {
 
     function displayQuiz() {
         // show question
-        var question = document.createElement("h2"); // initialize question variable
+        question = document.createElement("h2"); // initialize question variable
         question.textContent = arrQuestions[i].question; // inject question
         quiz.appendChild(question); // append question
 
@@ -90,9 +90,9 @@ startbtn.addEventListener("click", function () {
                 i++;          // increment question index
                 quiz.innerHTML = '';
                 displayQuiz() // display next question
-                quiz.appendChild(hrEl); // append horizontal rule
-                quiz.appendChild(h5El); // append h5 element
-                setTimeout(function () {
+                quiz.appendChild(hrEl);  // append horizontal rule
+                quiz.appendChild(h5El);  // append h5 element
+                setTimeout(function () { // remove elements after 1.25secs
                     hrEl.remove();
                     h5El.remove();
                 }, 1250);
@@ -105,9 +105,9 @@ startbtn.addEventListener("click", function () {
                 i++;          // increment question index
                 quiz.innerHTML = '';
                 displayQuiz() // display next question
-                quiz.appendChild(hrEl); // append horizontal rule
-                quiz.appendChild(h5El); // append h5 element
-                setTimeout(function () {
+                quiz.appendChild(hrEl);  // append horizontal rule
+                quiz.appendChild(h5El);  // append h5 element
+                setTimeout(function () { // remove elements after 1.25secs
                     hrEl.remove();
                     h5El.remove();
                 }, 1250);
@@ -136,6 +136,6 @@ document.querySelector("#submit").addEventListener("click", function() {
     
     // Send score/initials to local storage
     var allScores = JSON.parse(localStorage.getItem("Scores")) || [];   // pull scores from local storage
-    allScores.unshift({initials: submitted_initials, score: newScore});    // push newest score to array
+    allScores.unshift({initials: submitted_initials, score: newScore}); // push newest score to array
     localStorage.setItem("Scores", JSON.stringify(allScores));          // push updated array to local storage
 })
