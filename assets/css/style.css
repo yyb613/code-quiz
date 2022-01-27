@@ -1,11 +1,7 @@
 /* header */
 header {
     display: flex; 
-}
-
-/* timer */
-#timer {
-    justify-content: flex-end;  /*** NOT WORKING ***/
+    justify-content: space-between;
 }
 
 /* hide Game Over message */

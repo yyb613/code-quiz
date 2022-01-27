@@ -52,7 +52,7 @@ startbtn.addEventListener("click", function () {
         time.textContent = secs; // display seconds
         secs--;                  // decrement by 1
 
-        if (secs < 0) {
+        if (secs < 0 || i > 4) {
             clearInterval(timerInterval); // stop timer
             displayFinished(); // display finished message
         }
@@ -62,11 +62,11 @@ startbtn.addEventListener("click", function () {
 
     function displayQuiz() {
         // Game Over after last question
-        if (i > 4) {
-            displayFinished();            // game over message
-            clearInterval(timerInterval); // stop timer
-            return;                       //  exit function
-        }
+        // if (i > 4) {
+        //     displayFinished();            // game over message
+        //     clearInterval(timerInterval); // stop timer
+        //     return;                       //  exit function
+        // }
 
         // show question
         question = document.createElement("h2"); // initialize global question variable
@@ -82,11 +82,11 @@ startbtn.addEventListener("click", function () {
             quiz.appendChild(optionbtn); // append button
         }
     }
-
-    var correctAns = arrQuestions[i].correctAns; // correct answer variable
-
+    
     quiz.addEventListener("click", function (event) {
+        var correctAns = arrQuestions[i].correctAns; // correct answer variable
         var selectedOption = event.target.textContent;   // selected option variable
+        console.log(correctAns, selectedOption)
         if (event.target.matches(".option")) {           // if an 'option button' is selected
             if (selectedOption === correctAns) {         // if matches correct answer
                 var hrEl = document.createElement("hr"); // create horizontal rule
@@ -98,6 +98,7 @@ startbtn.addEventListener("click", function () {
                     optionsArr[j].style.display = "none";              // hide options
                 }
                 i++;          // increment question index
+                quiz.innerHTML = '';
                 displayQuiz() // display next question
                 quiz.appendChild(hrEl); // append horizontal rule
                 quiz.appendChild(h5El); // append h5 element
@@ -113,6 +114,7 @@ startbtn.addEventListener("click", function () {
                 numWrong++;   // increment wrong count
                 secs -= 10;   // reduce time by 10secs
                 i++;          // increment question index
+                quiz.innerHTML = '';
                 displayQuiz() // display next question
                 quiz.appendChild(hrEl); // append horizontal rule
                 quiz.appendChild(h5El); // append h5 element
@@ -128,19 +130,43 @@ function calculateScore() {
     return score;
 }
 
-// Game Over message
+// GAME OVER
 function displayFinished() {
-    finalMessage.style.display = "block"; // make message visible
-    document.querySelector('#score').textContent = calculateScore(); // display score
+    finalMessage.style.display = "block"; // display game over message 
+    newScore = calculateScore();          // calculate score
+    document.querySelector('#score').textContent = newScore; // display score
+
+    // HIGHSCORES
+    var scorePair = {
+        initials: 'RB',/////// HOW DO I RETRIEVE THE INITIALS? ////////
+        score: newScore
+    };
+
+    // Pull highscores from local storage
+    var allPairs = JSON.parse(localStorage.getItem("Scores")) || []; 
+
+    // Push newest score to array
+    allPairs.push(scorePair);
+
+    // Set highscore in local storage
+    localStorage.setItem("Scores", allPairs);
+
+    // Append highscore to highscores list
+    for (var i = 0; i < allPairs.length; i++) {
+
+        highscores.appendChild(allPairs[i].initials + ' — ' + allPairs[i].score);      ////// NOT WORKING ///////
+    }
 }
 
+document.querySelector("#submit").addEventListener("click", function(e) {
+    // e.preventDefault()
+    // var value = newScore;
 
+    var submitted_initials = document.querySelector("#initials").value;
 
-// Set highscore in local storage
-localStorage.setItem("newScore", score);  ///// HOW CAN I INCLUDE THE INITIALS? ///////
+    var allScores = JSON.parse(localStorage.getItem("Scores")) || [];
 
-// Retreive highscore from local storage
-var newHighScore = localStorage.getItem("newScore");
+    allScores.push({score: newScore, initials: submitted_initials});
 
-// Append highscore to highscores list
-highscores.appendChild(newHighScore);      ////// NOT WORKING ///////
+    localStorage.setItem("Scores", JSON.stringify(allScores));
+})
